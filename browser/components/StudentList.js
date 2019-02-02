@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import SingleStudent from "./SingleStudent";
 
 export default class StudentList extends React.Component {
   constructor() {
@@ -14,7 +15,7 @@ export default class StudentList extends React.Component {
   }
 
   async getStudents() {
-    console.log("fetching");
+    // console.log("fetching");
     try {
       const { data } = await axios.get("/student");
       this.setState({ students: data });
@@ -24,6 +25,7 @@ export default class StudentList extends React.Component {
   }
 
   render() {
+    console.log(this.state.students, "student list****");
     return (
       <div>
         <h1>Students</h1>
@@ -31,11 +33,13 @@ export default class StudentList extends React.Component {
           <tbody>
             <tr>
               <th>Name</th>
+              <th>Tests</th>
             </tr>
             {this.state.students.map(student => {
               return (
                 <tr key={student.id}>
                   <td>{student.fullName}</td>
+                  <td onClick={() => console.log("hello")}>Details</td>
                 </tr>
               );
             })}

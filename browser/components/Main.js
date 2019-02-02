@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import StudentList from "./SingleStudent";
+import StudentList from "./StudentList";
 import SingleStudent from "./SingleStudent";
 import { HashRouter, Route } from "react-router-dom";
 
@@ -8,7 +8,8 @@ export default class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      students: []
+      students: [],
+      report: {}
     };
   }
 
@@ -17,7 +18,7 @@ export default class Main extends Component {
   }
 
   async getStudents() {
-    console.log("fetching");
+    // console.log("fetching");
     try {
       const { data } = await axios.get("/student");
       this.setState({ students: data });
@@ -27,23 +28,11 @@ export default class Main extends Component {
   }
 
   render() {
+    // console.log(this.state.student);
     return (
       <div>
-        <h1>Students</h1>
-        <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-            </tr>
-            {this.state.students.map(student => {
-              return (
-                <tr key={student.id}>
-                  <td>{student.fullName}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <StudentList />
+        <SingleStudent />
       </div>
     );
   }

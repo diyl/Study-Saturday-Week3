@@ -1,20 +1,21 @@
 import React from "react";
-import axios from "axios";
 
-export default class SingleStudent extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      student: {
-        testScore: []
-      }
-    };
-  }
+const SingleStudent = props => {
+  // const { tests } = props;
+  // const { subject, grade } = tests;
 
-  async componentDidMount() {
-    console.log(this.props);
-  }
-  render() {
-    return <div />;
-  }
-}
+  return (
+    <div id="single-test">
+      <table>
+        <tbody>
+          <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+module.exports = SingleStudent;
